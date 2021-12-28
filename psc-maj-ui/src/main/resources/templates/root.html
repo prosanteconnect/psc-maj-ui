@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+ <body>
+ <div id="modop-form">
+<h6 >Vous trouverez l'identifiant national :</h6>
+        <ul>
+            <li>sur la première de la ligne de la CPS</li>
+            <li>en ajoutant un 8 devant un numéro RPPS, par exemple : 812345678901</li>
+            <li>en ajoutant un 0 devant un numéro ADELI, par exemple : 0123456789</li>
+        </ul>
+	
+    <form action="#" th:action="@{/recherche}" method="post">
+    	<p th:text="#{root.idNat}"> <input type="text" th:value="${idNat}" name="idNat" /></p>
+        <p><input type="submit" value="Recherche" /></p>
+    </form>       
+</div>
+</body>
+</html>

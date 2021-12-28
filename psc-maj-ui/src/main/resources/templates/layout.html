@@ -1,5 +1,6 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,11 +28,11 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <div>
-                    <a class="navbar-brand font-weight-bold" href="{{ route('welcome') }}">
-                        <span style="color:rgb(27,113,184);">Pro SantÃ© </span>
+                    <a class="navbar-brand font-weight-bold" href="Bienvenue.html" th:href="@{/}">
+                        <span style="color:rgb(27,113,184);">Pro Santé </span>
                         <span style="color:rgb(214,10,82);">Connect</span>
                     </a>
-                    <a class="navbar-brand font-weight-bold" href="{{ route('files.index') }}">
+                    <a class="navbar-brand font-weight-bold" href="Files.html" th:href="@{/files}">
                         <span style="color:rgb(27,113,184);">- Files</span>
                     </a>
                 </div>
@@ -51,7 +52,7 @@
                         <!-- Authentication Links -->
       
                             <li class="nav-item">
-                                <a class="nav-link" href="auth.redirect">coucou</a>
+                                <a class="nav-link" href="auth.redirect" th:text=#{nav.seConnecter}></a>
                             </li>
                    
                     </ul>
@@ -60,11 +61,19 @@
         </nav>
 
         <div class="py-4 align-items-center justify-content-center" style="display: flex">
-            <img src="images/LOGO_ANS_2020_Ligne.png" class="col-md-8 col-lg-8 col-sm-8" alt="ans logo zzz">
+            <img src="images/LOGO_ANS_2020_Ligne.png" class="col-md-8 col-lg-8 col-sm-8" alt="ans logo">
         </div>
 
         <main class="py-4">
-        <p>ICI CONTENU DE lA PAGE</p>
+        
+        <p th:text="'Content du model => ' +  ${content} " /></p>
+        <div th:switch="${content}">
+  			<div th:case="sharpNotSUpported"><div th:include="root :: #modop-form"></div> </div>
+  			<div th:case="upload_recup"><div th:include="upload :: #recup"></div> </div>  			   
+  			<div th:case="*"><p> !!! CONTENU NON DEFINI !!!</p> </div>
+		</div>
+      
+         
         </main>
     </div>
 </body>
