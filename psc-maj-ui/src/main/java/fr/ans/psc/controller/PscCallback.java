@@ -1,4 +1,4 @@
-package fr.ans.psc.pscmajui;
+package fr.ans.psc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,17 +8,16 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class FilesController {
+public class PscCallback {
 
 	private static String RETURNED_PAGE="layout";
 	private static String INCLUDED_CONTENT="upload_recup";
 	
-	
-	@GetMapping("/files")
+	@GetMapping("/prosanteconnect/callback")
 	public String layout(Model model) {		
-		log.info("RootController IN . Pas de paramètre");		
+		log.info("PscCallback IN . ");		
 		model.addAttribute("content", INCLUDED_CONTENT);
-		log.info("RootController OUT returnedPage={} , includedContent={} ",RETURNED_PAGE, INCLUDED_CONTENT );		
+		log.info("PscCallback OUT returnedPage={} , includedContent={} ",RETURNED_PAGE, INCLUDED_CONTENT );		
 		return RETURNED_PAGE;
 
 	}
