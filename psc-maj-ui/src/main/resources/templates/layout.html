@@ -52,7 +52,7 @@
                         <!-- Authentication Links -->
       
                             <li class="nav-item">
-                                <a class="nav-link" href="auth.redirect" th:text=#{nav.seConnecter}></a>
+                                <a class="nav-link" href="auth.redirect" th:text=#{nav.seConnecter} th:href="@{/login}"></a>
                             </li>
                    
                     </ul>
@@ -68,7 +68,7 @@
         
         <p th:text="'Content du model => ' +  ${content} " /></p>
         <div th:switch="${content}">
-  			<div th:case="sharpNotSUpported"><div th:include="root :: #modop-form"></div> </div>
+  			<div th:case="welcome"><div th:include="root :: #modop-form"></div> </div>
   			<div th:case="upload_recup"><div th:include="upload :: #recup"></div> </div>  			   
   			<div th:case="*"><p> !!! CONTENU NON DEFINI !!!</p> </div>
 		</div>

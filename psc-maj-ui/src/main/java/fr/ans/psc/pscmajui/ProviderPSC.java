@@ -6,12 +6,12 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
 
 
 @Configuration
 public class ProviderPSC  {
-	
-   
+	 
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
         return new InMemoryClientRegistrationRepository(this.proSanteConnectClientRegistration());
@@ -25,20 +25,22 @@ public class ProviderPSC  {
               //  .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_JWT)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 //.redirectUriTemplate("{baseUrl}/login/oauth2/code/{registrationId}")
-                .scope("openid","scope_all" )
+                .scope("openid","scope_all" )                
                 .authorizationUri("https://wallet.bas.esw.esante.gouv.fr/auth")
                 .redirectUri("https://psc-ws-maj.test.psc.api.esante.gouv.fr/ui/auth/prosanteconnect/callback")
               //  .redirectUri("{baseUrl}/prosanteconnect/callback")
-                .tokenUri("https://auth.bas.esw.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect")
-                //.userInfoUri("https://www.googleapis.com/oauth2/v3/userinfo")
-                //.userNameAttributeName(IdTokenClaimNames.SUB)
+                
+                //.tokenUri("https://auth.bas.esw.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect")    
+                .tokenUri("https://auth.bas.esw.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect/token")
+                
+                //.userInfoUri("https://auth.bas.esw.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect/token")
+                .userNameAttributeName(IdTokenClaimNames.SUB)
                 //.jwkSetUri("https://www.googleapis.com/oauth2/v3/certs")
                 //.clientName("Google")
                 .build();
-    	   	
+    	   	 
     }
     
-    
-    
-    
+ 
+       
 }

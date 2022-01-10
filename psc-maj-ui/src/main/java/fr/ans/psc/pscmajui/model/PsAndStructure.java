@@ -1,5 +1,7 @@
-package fr.ans.psc.model;
+package fr.ans.psc.pscmajui.model;
 
+import fr.ans.psc.model.Ps;
+import fr.ans.psc.model.Structure;
 import lombok.Getter;
 import lombok.Setter;
 
